@@ -1,0 +1,37 @@
+# Plugin data (managed by lazy.nvim, stored in stdpath("data"))
+# Don't ignore lazy-lock.json - it tracks plugin versions for reproducibility
+
+# Neovim generated files
+*.swp
+*.swo
+*~
+tags
+
+# Session files (created by vim-obsession)
+Session.vim
+
+# Undo history (stored in stdpath("state") but just in case)
+undo/
+
+# Local machine-specific overrides (create this file for personal tweaks)
+lua/config/local.lua
+
+# Compiled Lua bytecode
+*.luac
+luac.out
+
+# Spell files (downloaded per-machine)
+spell/*.add
+spell/*.spl
+spell/*.sug
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Temporary/test files
+test_*.lua
+scratch.lua
