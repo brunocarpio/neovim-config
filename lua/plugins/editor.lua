@@ -28,25 +28,10 @@ return {
   },
 
   -- Treesitter (syntax highlighting)
-  -- DISABLED: No C compiler available for parser compilation
-  -- To enable: install gcc/clang/zig, then set enabled = true
   {
     "nvim-treesitter/nvim-treesitter",
-    enabled = false, -- Disabled until C compiler is available
-    branch = "master",
+    enabled = true,
     build = ":TSUpdate",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "lua", "vim", "vimdoc", "typescript", "javascript",
-          "json", "html", "css", "markdown", "markdown_inline", "bash",
-        },
-        auto_install = false,
-        highlight = { enable = true },
-        indent = { enable = true },
-      })
-    end,
   },
 
   -- Autopairs

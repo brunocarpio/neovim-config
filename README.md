@@ -125,17 +125,6 @@ Managed by Mason. Currently configured:
 
 Install additional servers with `:Mason`.
 
-## Treesitter
-
-Currently disabled (requires a C compiler for parser compilation). To enable:
-
-1. Install a C compiler:
-   - **Windows**: Install [zig](https://ziglang.org/) or MinGW
-   - **macOS**: `xcode-select --install`
-   - **Linux**: `sudo apt install build-essential` (or equivalent)
-
-2. Edit `lua/plugins/editor.lua` and set `enabled = true` for nvim-treesitter.
-
 ## Customization
 
 ### Adding Plugins
