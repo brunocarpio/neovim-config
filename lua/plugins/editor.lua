@@ -7,6 +7,11 @@ return {
     opts = {},
   },
 
+  {
+    "tpope/vim-surround",
+    dependencies = { "tpope/vim-repeat" },
+  },
+
   -- vim-repeat (dot repeat support)
   { "tpope/vim-repeat", event = "VeryLazy" },
 
