@@ -96,5 +96,27 @@ return {
       -- Load custom Lua or VSCode-style snippets if needed
       -- require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/luasnippets" })
     end,
+  },
+
+  {
+    "stevearc/conform.nvim",
+    event = { "BufWritePre", "BufNewFile" },
+    cmd = { "ConformInfo" },
+    keys = {
+      {
+        "<leader>f",
+        function()
+          require("conform").format({ async = true, lsp_fallback = true })
+        end,
+        mode = "",
+        desc = "Format buffer",
+      },
+    },
+    opts = {
+      format_on_save = {
+        timeout_ms = 500,
+        lsp_fallback = true,
+      },
+    },
   }
 }
