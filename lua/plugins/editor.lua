@@ -13,7 +13,7 @@ return {
   },
 
   -- vim-repeat (dot repeat support)
-  { "tpope/vim-repeat", event = "VeryLazy" },
+  { "tpope/vim-repeat",     event = "VeryLazy" },
 
   -- vim-unimpaired (bracket mappings: [b ]b buffers, [q ]q quickfix, [e ]e move lines, etc.)
   { "tpope/vim-unimpaired", event = "VeryLazy" },
@@ -118,5 +118,11 @@ return {
         lsp_fallback = true,
       },
     },
+  },
+
+  {
+    "nvim-zh/colorful-winsep.nvim",
+    config = true,
+    event = { "WinLeave" },
   }
 }
