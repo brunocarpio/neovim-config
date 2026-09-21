@@ -114,6 +114,7 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
+      "davidsierradz/cmp-conventionalcommits",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
     },
@@ -176,6 +177,13 @@ return {
         sources = {
           { name = "buffer" },
         },
+      })
+
+      cmp.setup.filetype('gitcommit', {
+        sources = cmp.config.sources({
+          { name = "conventionalcommits" },
+          { name = "buffer" }
+        })
       })
     end,
   },
