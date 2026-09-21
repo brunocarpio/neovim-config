@@ -47,15 +47,29 @@ opt.wildignore:append({ "**/node_modules/*", "**/.git/*" })
 vim.schedule(function()
   opt.clipboard = "unnamedplus"
 
-  vim.g.clipboard = {
-    name = 'xclip',
-    copy = {
-      ['+'] = 'xclip -selection clipboard',
-      ['*'] = 'xclip -selection primary',
-    },
-    paste = {
-      ['+'] = 'xclip -selection clipboard -o',
-      ['*'] = 'xclip -selection primary -o',
+  if os.getenv("WAYLAND_DISPLAY") then
+    vim.g.clipboard = {
+      name = 'wl-clipboard',
+      copy = {
+        ['+'] = 'wl-copy',
+        ['*'] = 'wl-copy',
+      },
+      paste = {
+        ['*'] = 'wl-paste',
+        ['+'] = 'wl-paste',
+      }
     }
-  }
+  else
+    vim.g.clipboard = {
+      name = 'xclip',
+      copy = {
+        ['+'] = 'xclip -selection clipboard',
+        ['*'] = 'xclip -selection primary',
+      },
+      paste = {
+        ['+'] = 'xclip -selection clipboard -o',
+        ['*'] = 'xclip -selection primary -o',
+      }
+    }
+  end
 end)
