@@ -1,10 +1,7 @@
 -- Editor enhancements
 return {
-  -- Comment.nvim (replaces vim-commentary)
   {
-    "numToStr/Comment.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    opts = {},
+    "tpope/vim-commentary", event = "VeryLazy"
   },
 
   {
@@ -28,7 +25,7 @@ return {
         style = "night",
         transparent = false,
       })
-      vim.cmd.colorscheme("tokyonight")
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
 
