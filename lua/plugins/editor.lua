@@ -5,6 +5,10 @@ return {
   },
 
   {
+    "tpope/vim-abolish", event = "VeryLazy"
+  },
+
+  {
     "tpope/vim-surround",
     dependencies = { "tpope/vim-repeat" },
   },
