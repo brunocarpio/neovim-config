@@ -9,6 +9,20 @@ return {
   },
 
   {
+    "tpope/vim-dispatch",
+    cmd = { "Make", "Dispatch" },
+    config = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "python",
+        callback = function()
+          vim.bo.makeprg = "pyright"
+          vim.bo.errorformat = "%f:%l:%c - %t%*[^:]:%m"
+        end,
+      })
+    end
+  },
+
+  {
     "tpope/vim-surround",
     dependencies = { "tpope/vim-repeat" },
   },
