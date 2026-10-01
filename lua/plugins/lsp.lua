@@ -28,6 +28,16 @@ return {
         capabilities = require("cmp_nvim_lsp").default_capabilities(),
       })
 
+      vim.lsp.config("pyright", {
+        settings = {
+          pyright = { disableTaggedHints = false }
+        }
+      })
+
+      vim.lsp.config("ruff", {
+        settings = {}
+      })
+
       -- TypeScript/JavaScript specific config
       vim.lsp.config("ts_ls", {
         settings = {
@@ -103,7 +113,6 @@ return {
     end,
   },
 
-  -- Mason-lspconfig: Bridge between Mason and lspconfig
   {
     "williamboman/mason-lspconfig.nvim",
     lazy = false,
@@ -113,10 +122,12 @@ return {
     },
     opts = {
       ensure_installed = {
-        "ts_ls",  -- TypeScript/JavaScript
-        "lua_ls", -- Lua
+        "ts_ls",
+        "lua_ls",
+        "biome",
+        "pyright",
+        "ruff",
       },
-      -- automatic_enable = true is the default, auto-enables installed servers
     },
   },
 
