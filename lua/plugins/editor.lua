@@ -52,6 +52,15 @@ return {
     "nvim-treesitter/nvim-treesitter",
     enabled = true,
     build = ":TSUpdate",
+    config = function()
+      -- On the main branch highlighting is not enabled automatically; start it
+      -- per-buffer once a parser is available (pcall covers filetypes without one).
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          pcall(vim.treesitter.start)
+        end,
+      })
+    end,
   },
 
   -- Autopairs

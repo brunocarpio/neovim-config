@@ -45,7 +45,7 @@ opt.wildignore:append({ "**/node_modules/*", "**/.git/*" })
 
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "javascript", "html", "python" },
+  pattern = { "javascript", "html", "python", "cpp", "c" },
   callback = function()
     vim.wo.foldmethod = 'expr'
     vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
