@@ -9,6 +9,10 @@ return {
   },
 
   {
+    "tpope/vim-dadbod", event = "VeryLazy"
+  },
+
+  {
     "tpope/vim-dispatch",
     cmd = { "Make", "Dispatch" },
     config = function()
