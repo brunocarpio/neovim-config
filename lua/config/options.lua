@@ -37,6 +37,18 @@ opt.splitbelow = true
 opt.confirm = true
 opt.wrap = false
 
+-- Reload files changed outside of Neovim
+opt.autoread = true
+
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  callback = function()
+    -- Ignore terminal buffers, which checktime can interfere with
+    if vim.bo.buftype ~= "terminal" then
+      vim.cmd("checktime")
+    end
+  end,
+})
+
 -- Completion
 opt.completeopt = { "menu", "menuone", "noselect" }
 
