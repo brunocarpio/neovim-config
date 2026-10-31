@@ -5,11 +5,18 @@
 return {
   {
     "folke/snacks.nvim",
-    -- Keep snacks but only load the explorer; disable all other snacks modules
+    lazy = false,
+    -- Keep snacks but only load the explorer and indent guides;
+    -- disable all other snacks modules
     opts = function(_, opts)
       opts.bigfile = { enabled = false }
       opts.dashboard = { enabled = false }
-      opts.indent = { enabled = false }
+      opts.indent = {
+        enabled = true,
+        indent = { char = "│" },
+        scope = { enabled = true, char = "│", underline = false },
+        animate = { enabled = true, style = "out" },
+      }
       opts.input = { enabled = false }
       opts.notifier = { enabled = false }
       opts.scope = { enabled = false }
