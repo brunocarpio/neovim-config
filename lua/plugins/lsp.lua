@@ -26,8 +26,28 @@ return {
 
       vim.lsp.config("pyright", {
         settings = {
-          pyright = { disableTaggedHints = false }
-        }
+          pyright = {
+            disableTaggedHints = false,
+            disableOrganizeImports = true,
+          },
+          python = {
+            analysis = {
+              diagnosticSeverityOverrides = {
+                reportUnusedImport = "none",
+                reportUnusedVariable = "none",
+                reportDuplicateImport = "none",
+              },
+            },
+          },
+        },
+      })
+
+      vim.lsp.config("ruff", {
+        init_options = {
+          settings = {
+            organizeImports = true,
+          },
+        },
       })
 
       vim.lsp.config("ts_ls", {
@@ -63,6 +83,14 @@ return {
             telemetry = { enable = false },
           },
         },
+      })
+
+      vim.lsp.enable({
+        "ts_ls",
+        "lua_ls",
+        "biome",
+        "pyright",
+        "ruff",
       })
 
       vim.api.nvim_create_autocmd("LspAttach", {
