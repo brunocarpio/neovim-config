@@ -68,7 +68,6 @@ local function refresh_fugitive_status()
   if #wins == 0 or vim.fn.exists("*fugitive#ReloadStatus") == 0 then
     return
   end
-  -- Avoid shelling out to git more than once per second
   local now = vim.uv.hrtime()
   if now - last_status_refresh < 1e9 then
     return
@@ -76,12 +75,15 @@ local function refresh_fugitive_status()
   last_status_refresh = now
   for _, win in ipairs(wins) do
     vim.api.nvim_win_call(win, function()
+      local col = vim.api.nvim_win_get_cursor(0)[2]
       vim.cmd("silent call fugitive#ReloadStatus()")
+      local row = vim.api.nvim_win_get_cursor(0)[1]
+      local line = vim.api.nvim_buf_get_lines(0, row - 1, row, false)[1] or ""
+      vim.api.nvim_win_set_cursor(0, { row, math.min(col, math.max(0, #line)) })
     end)
   end
 end
 
--- A buffer was reloaded from disk: refresh gitsigns signs and :Git status
 vim.api.nvim_create_autocmd("FileChangedShellPost", {
   callback = function()
     pcall(function()
@@ -91,15 +93,10 @@ vim.api.nvim_create_autocmd("FileChangedShellPost", {
   end,
 })
 
--- Also refresh :Git when returning to Neovim or to the status buffer, which
--- covers edits to files that are not open in a buffer (checktime can't see them)
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "TabEnter", "CursorHold", "CursorHoldI" }, {
   callback = refresh_fugitive_status,
 })
 
--- :Git never polls on its own, so refresh it periodically while it is visible.
--- This catches external edits to files that are not open in a buffer, or ones
--- made while Neovim keeps focus (e.g. from another tmux pane or a script).
 local status_timer = vim.uv.new_timer()
 status_timer:start(2000, 2000, vim.schedule_wrap(function()
   pcall(refresh_fugitive_status)
