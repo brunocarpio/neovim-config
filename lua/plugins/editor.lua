@@ -1,4 +1,3 @@
--- Editor enhancements
 return {
   {
     "tpope/vim-commentary", event = "VeryLazy"
@@ -31,34 +30,22 @@ return {
     dependencies = { "tpope/vim-repeat" },
   },
 
-  -- vim-repeat (dot repeat support)
-  { "tpope/vim-repeat",     event = "VeryLazy" },
-
-  -- vim-unimpaired (bracket mappings: [b ]b buffers, [q ]q quickfix, [e ]e move lines, etc.)
   { "tpope/vim-unimpaired", event = "VeryLazy" },
 
-  -- Colorscheme
   {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("tokyonight").setup({
-        style = "night",
-        transparent = false,
-      })
+      require("tokyonight").setup({ style = "night" })
       vim.cmd.colorscheme("catppuccin")
     end,
   },
 
-  -- Treesitter (syntax highlighting)
   {
     "nvim-treesitter/nvim-treesitter",
-    enabled = true,
     build = ":TSUpdate",
     config = function()
-      -- On the main branch highlighting is not enabled automatically; start it
-      -- per-buffer once a parser is available (pcall covers filetypes without one).
       vim.api.nvim_create_autocmd("FileType", {
         callback = function()
           pcall(vim.treesitter.start)
@@ -67,20 +54,17 @@ return {
     end,
   },
 
-  -- Autopairs
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = function()
       require("nvim-autopairs").setup({})
-      -- Integrate with cmp
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       local cmp = require("cmp")
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end,
   },
 
-  -- Status line
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -121,8 +105,6 @@ return {
         history = true,
         updateevents = "TextChanged,TextChangedI",
       })
-      -- Load custom Lua or VSCode-style snippets if needed
-      -- require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/luasnippets" })
     end,
   },
 

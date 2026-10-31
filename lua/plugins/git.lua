@@ -1,4 +1,3 @@
--- Git integration
 return {
   {
     "lewis6991/gitsigns.nvim",
@@ -18,16 +17,11 @@ return {
         end
 
         local command = function(name, com)
-          vim.api.nvim_create_user_command(name, function()
-            com()
-          end, {})
+          vim.api.nvim_create_user_command(name, com, {})
         end
 
-        -- Navigation
         map("n", "]c", gs.next_hunk, "Next hunk")
         map("n", "[c", gs.prev_hunk, "Previous hunk")
-
-        -- Commands
         command('HunkPreview', gs.preview_hunk)
         command('HunkStage', gs.stage_hunk)
         command('HunkReset', gs.reset_hunk)
@@ -36,7 +30,6 @@ return {
     },
   },
 
-  -- Fugitive (Git commands)
   {
     "tpope/vim-fugitive",
     lazy = false,

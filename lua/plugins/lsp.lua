@@ -1,6 +1,4 @@
--- LSP Configuration with Mason (Neovim 0.11+ / mason-lspconfig v2.x)
 return {
-  -- Mason: LSP/formatter/linter installer
   {
     "williamboman/mason.nvim",
     lazy = false,
@@ -15,7 +13,6 @@ return {
     },
   },
 
-  -- nvim-lspconfig: Provides LSP server configurations
   {
     "neovim/nvim-lspconfig",
     lazy = false,
@@ -23,7 +20,6 @@ return {
       "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
-      -- Global LSP capabilities (applies to all servers)
       vim.lsp.config("*", {
         capabilities = require("cmp_nvim_lsp").default_capabilities(),
       })
@@ -34,11 +30,6 @@ return {
         }
       })
 
-      vim.lsp.config("ruff", {
-        settings = {}
-      })
-
-      -- TypeScript/JavaScript specific config
       vim.lsp.config("ts_ls", {
         settings = {
           typescript = {
@@ -58,7 +49,6 @@ return {
         },
       })
 
-      -- Lua specific config (for Neovim)
       vim.lsp.config("lua_ls", {
         settings = {
           Lua = {
@@ -75,7 +65,6 @@ return {
         },
       })
 
-      -- LSP keymaps (set when LSP attaches to buffer)
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
           local bufnr = args.buf
@@ -83,15 +72,14 @@ return {
             vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
           end
 
-          -- hover
-          vim.keymap.set('n', 'K', function()
+          map("K", function()
             vim.lsp.buf.hover({
-              border = 'rounded',
+              border = "rounded",
               max_height = 80,
               max_width = 100,
               focusable = true,
             })
-          end, { buffer = bufnr, desc = "LSP: Hover documentation" })
+          end, "Hover documentation")
 
           map("gd", vim.lsp.buf.definition, "Go to definition")
           map("gD", vim.lsp.buf.declaration, "Go to declaration")
@@ -131,7 +119,6 @@ return {
     },
   },
 
-  -- Completion plugins (nvim-cmp ecosystem)
   {
     "hrsh7th/nvim-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
@@ -170,7 +157,6 @@ return {
         }),
       })
 
-      -- Command line completion
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({

@@ -1,11 +1,8 @@
--- Options (ported from vimrc)
 local opt = vim.opt
 
--- Line numbers
 opt.number = true
 opt.relativenumber = true
 
--- Tabs and indentation
 opt.expandtab = true
 opt.smartindent = true
 opt.autoindent = true
@@ -13,20 +10,17 @@ opt.tabstop = 2
 opt.shiftwidth = 2
 opt.softtabstop = 2
 
--- Search
 opt.smartcase = true
 opt.ignorecase = true
 opt.incsearch = true
 opt.hlsearch = true
 
--- Appearance
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
 opt.cursorline = true
 opt.scrolloff = 8
 
--- Behavior
 opt.mouse = "a"
 opt.swapfile = false
 opt.undofile = true
@@ -36,20 +30,15 @@ opt.splitright = true
 opt.splitbelow = true
 opt.confirm = true
 opt.wrap = false
-
--- Reload files changed outside of Neovim
 opt.autoread = true
 
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
   callback = function()
-    -- Ignore terminal buffers, which checktime can interfere with
     if vim.bo.buftype ~= "terminal" then
       vim.cmd("checktime")
     end
   end,
 })
-
--- Keep git views in sync with changes made outside of Neovim
 
 local last_status_refresh = 0
 
@@ -97,22 +86,15 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "TabEnter", "CursorHold
   callback = refresh_fugitive_status,
 })
 
-local status_timer = vim.uv.new_timer()
-status_timer:start(2000, 2000, vim.schedule_wrap(function()
-  pcall(refresh_fugitive_status)
-end))
+vim.uv.new_timer():start(2000, 2000, vim.schedule_wrap(refresh_fugitive_status))
 
--- Completion
 opt.completeopt = { "menu", "menuone", "noselect" }
-
--- Wildmenu
 opt.wildignore:append({ "**/node_modules/*", "**/.git/*" })
-
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "javascript", "html", "python", "cpp", "c" },
   callback = function()
-    vim.wo.foldmethod = 'expr'
-    vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    vim.wo.foldmethod = "expr"
+    vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
   end,
 })

@@ -1,4 +1,3 @@
--- Telescope - Fuzzy finder (replaces CtrlP)
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
@@ -61,7 +60,6 @@ return {
       },
     })
 
-    -- Load fzf extension if available (provides better sorting)
     pcall(telescope.load_extension, "fzf")
   end,
 }

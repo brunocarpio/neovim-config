@@ -1,6 +1,3 @@
--- Obsession: Session management by tpope
--- Automatically saves session state to make it easy to resume work
-
 return {
   "tpope/vim-obsession",
   cmd = { "Obsession" },

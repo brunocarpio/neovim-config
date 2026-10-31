@@ -1,13 +1,7 @@
--- =============================================================================
--- File tree plugin: snacks.nvim explorer
--- =============================================================================
-
 return {
   {
     "folke/snacks.nvim",
     lazy = false,
-    -- Keep snacks but only load the explorer and indent guides;
-    -- disable all other snacks modules
     opts = function(_, opts)
       opts.bigfile = { enabled = false }
       opts.dashboard = { enabled = false }
