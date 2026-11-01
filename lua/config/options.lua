@@ -90,11 +90,3 @@ vim.uv.new_timer():start(2000, 2000, vim.schedule_wrap(refresh_fugitive_status))
 
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.wildignore:append({ "**/node_modules/*", "**/.git/*" })
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "javascript", "html", "python", "cpp", "c" },
-  callback = function()
-    vim.wo.foldmethod = "expr"
-    vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-  end,
-})
