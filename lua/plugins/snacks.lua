@@ -31,7 +31,14 @@ return {
       opts.lazygit = { enabled = false }
       opts.zen = { enabled = false }
       opts.bufdelete = { enabled = false }
-      opts.explorer = opts.explorer or {}
+      opts.picker = {
+        enabled = true,
+        sources = {
+          explorer = {
+            follow_file = false,
+          },
+        },
+      }
     end,
     keys = {
       { "\\", function() require("snacks").explorer() end, desc = "Explorer Snacks (root dir)" },
