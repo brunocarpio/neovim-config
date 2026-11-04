@@ -177,12 +177,18 @@ return {
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
         }),
-        sources = cmp.config.sources({
+        sources = {
           { name = "nvim_lsp" },
           { name = "luasnip" },
-          { name = "buffer" },
+          { name = "buffer", option = {
+            get_bufnrs = function()
+              return vim.tbl_filter(function(bufnr)
+                return vim.bo[bufnr].buflisted and vim.api.nvim_buf_get_name(bufnr) > ""
+              end, vim.api.nvim_list_bufs())
+            end,
+          } },
           { name = "path" },
-        }),
+        },
       })
 
       cmp.setup.cmdline(":", {
