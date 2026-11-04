@@ -60,7 +60,7 @@ nvim/
 │       ├── git.lua          # Git integration (gitsigns, fugitive)
 │       ├── lsp.lua          # LSP, Mason, completion
 │       ├── obsession.lua    # Session management
-│       ├── snacks.lua       # File explorer
+│       ├── neo-tree.lua     # File explorer + window picker
 │       └── telescope.lua    # Fuzzy finder
 └── lazy-lock.json           # Plugin version lock file
 ```
@@ -77,7 +77,7 @@ Leader key: `Space`
 | `<Esc>` | Clear search highlight |
 | `<C-h/j/k/l>` | Navigate windows |
 | `-` | Open parent directory (netrw) |
-| `\` | Open file explorer (snacks) |
+| `\` | Toggle file explorer (neo-tree) |
 
 ### Telescope (Fuzzy Finder)
 

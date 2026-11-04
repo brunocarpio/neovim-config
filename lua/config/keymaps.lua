@@ -7,6 +7,8 @@ map("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
 map("n", "-", "<cmd>Ex<CR>", { desc = "Open parent directory (netrw)" })
 
+map("n", "\\", "<cmd>Neotree toggle<CR>", { desc = "Toggle file explorer (neo-tree)" })
+
 map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 
 map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
