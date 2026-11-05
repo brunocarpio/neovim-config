@@ -27,6 +27,7 @@ return {
     lazy = false,
     opts = {
       filesystem = {
+        group_empty_dirs = true,
         window = {
           mappings = {
             ["<cr>"] = "open_with_window_picker",
