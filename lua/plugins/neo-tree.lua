@@ -33,6 +33,8 @@ return {
             ["<cr>"] = "open_with_window_picker",
             ["s"] = "split_with_window_picker",
             ["v"] = "vsplit_with_window_picker",
+            ["zc"] = "close_all_nodes",
+            ["zo"] = "expand_all_nodes",
           },
         },
       },
