@@ -27,12 +27,15 @@ return {
     lazy = false,
     opts = {
       filesystem = {
+        scan_mode = "deep",
         group_empty_dirs = true,
         window = {
+          width = "25%",
           mappings = {
             ["<cr>"] = "open_with_window_picker",
             ["s"] = "split_with_window_picker",
             ["v"] = "vsplit_with_window_picker",
+            ["z"] = "none",
             ["zc"] = "close_all_nodes",
             ["zo"] = "expand_all_nodes",
           },
