@@ -25,12 +25,15 @@ return {
       opts.image = { enabled = false }
       opts.animate = { enabled = false }
       opts.notify = { enabled = false }
-      opts.dim = { enabled = false }
+      opts.dim = { enabled = true }
       opts.git = { enabled = false }
       opts.gitbrowse = { enabled = false }
       opts.profiler = { enabled = false }
       opts.lazygit = { enabled = false }
-      opts.zen = { enabled = false }
+      opts.zen = {
+        enabled = true,
+        toggles = { dim = true },
+      }
       opts.bufdelete = { enabled = false }
     end,
   },
