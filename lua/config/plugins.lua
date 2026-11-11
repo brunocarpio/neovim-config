@@ -154,6 +154,7 @@ require("neo-tree").setup({
   filesystem = {
     scan_mode = "deep",
     group_empty_dirs = true,
+    follow_current_file = { enabled = true },
     window = {
       width = "25%",
       mappings = {
