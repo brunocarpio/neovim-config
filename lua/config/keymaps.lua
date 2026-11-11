@@ -7,8 +7,6 @@ map("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
 map("n", "-", "<cmd>Ex<CR>", { desc = "Open parent directory (netrw)" })
 
-map("n", "\\", "<cmd>Neotree toggle<CR>", { desc = "Toggle file explorer (neo-tree)" })
-
 map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 
 map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
@@ -23,6 +21,5 @@ map("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 map("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = "Go to previous diagnostic" })
 map("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = "Go to next diagnostic" })
-map("n", "<leader>z", function() require("snacks").zen() end, { desc = "Toggle Zen Mode" })
 map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic message" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic list" })
