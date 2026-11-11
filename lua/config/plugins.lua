@@ -133,6 +133,9 @@ do
   opts.bufdelete = { enabled = false }
   require("snacks").setup(opts)
 end
+vim.keymap.set("n", "<leader>z", function()
+  require("snacks").zen()
+end, { desc = "Toggle Zen Mode" })
 
 require("window-picker").setup({
   hint = "floating-big-letter",
@@ -164,6 +167,7 @@ require("neo-tree").setup({
     },
   },
 })
+vim.keymap.set("n", "\\", "<cmd>Neotree toggle<CR>", { desc = "Toggle file explorer (neo-tree)" })
 
 do
   local telescope = require("telescope")
