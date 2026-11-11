@@ -52,7 +52,6 @@ local specs = {
   { src = gh("nvim-neo-tree/neo-tree.nvim"), version = "v3.x" },
   { src = gh("folke/snacks.nvim") },
   { src = gh("nvim-treesitter/nvim-treesitter") },
-  { src = gh("nvim-lualine/lualine.nvim") },
   { src = gh("windwp/nvim-autopairs") },
   { src = gh("rafamadriz/friendly-snippets") },
   { src = gh("L3MON4D3/LuaSnip"), version = vim.version.range("2") },
@@ -81,22 +80,6 @@ pcall(vim.cmd.colorscheme, "catppuccin")
 if not vim.g.colors_name then
   vim.cmd.colorscheme("tokyonight")
 end
-
-require("lualine").setup({
-  options = {
-    theme = "tokyonight",
-    component_separators = { left = "", right = "" },
-    section_separators = { left = "", right = "" },
-  },
-  sections = {
-    lualine_a = { "mode" },
-    lualine_b = { "branch", "diff", "diagnostics" },
-    lualine_c = { { "filename", path = 1 } },
-    lualine_x = { "encoding", "fileformat", "filetype" },
-    lualine_y = { "progress" },
-    lualine_z = { "location" },
-  },
-})
 
 do
   local opts = {}
