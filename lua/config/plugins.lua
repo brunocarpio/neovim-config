@@ -342,6 +342,7 @@ require("mason-lspconfig").setup({
     "pyright",
     "ruff",
     "jdtls",
+    "gopls",
   },
   automatic_enable = {
     exclude = { "jdtls" },
@@ -420,6 +421,7 @@ vim.lsp.enable({
   "pyright",
   "ruff",
   "jdtls",
+  "gopls",
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
