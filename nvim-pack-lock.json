@@ -138,6 +138,10 @@
       "rev": "dad3b5a1f9b661e27cb77fc69308287349d3cf30",
       "src": "https://github.com/tpope/vim-obsession"
     },
+    "vim-projectionist": {
+      "rev": "5ff7bf79a6ef741036d2038a226bcb5f8b1cd296",
+      "src": "https://github.com/tpope/vim-projectionist"
+    },
     "vim-repeat": {
       "rev": "65846025c15494983dafe5e3b46c8f88ab2e9635",
       "src": "https://github.com/tpope/vim-repeat"

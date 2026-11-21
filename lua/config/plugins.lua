@@ -43,6 +43,7 @@ local specs = {
   { src = gh("tpope/vim-repeat") },
   { src = gh("tpope/vim-surround") },
   { src = gh("tpope/vim-unimpaired") },
+  { src = gh("tpope/vim-projectionist") },
   { src = gh("tpope/vim-obsession") },
   { src = gh("tpope/vim-fugitive") },
   { src = gh("lewis6991/gitsigns.nvim") },
@@ -479,3 +480,5 @@ require("colorful-winsep").setup({})
 vim.api.nvim_create_user_command("PackUpdate", function()
   vim.pack.update()
 end, {})
+
+require("config.projectionist")
