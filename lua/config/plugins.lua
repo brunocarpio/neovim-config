@@ -340,6 +340,10 @@ require("mason-lspconfig").setup({
     "biome",
     "pyright",
     "ruff",
+    "jdtls",
+  },
+  automatic_enable = {
+    exclude = { "jdtls" },
   },
 })
 
@@ -414,6 +418,7 @@ vim.lsp.enable({
   "biome",
   "pyright",
   "ruff",
+  "jdtls",
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
