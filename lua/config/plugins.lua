@@ -50,12 +50,12 @@ local specs = {
   { src = gh("sindrets/diffview.nvim") },
   { src = gh("nvim-telescope/telescope.nvim") },
   { src = gh("NeogitOrg/neogit") },
-  { src = gh("nvim-neo-tree/neo-tree.nvim"), version = "v3.x" },
+  { src = gh("nvim-neo-tree/neo-tree.nvim"),          version = "v3.x" },
   { src = gh("folke/snacks.nvim") },
   { src = gh("nvim-treesitter/nvim-treesitter") },
   { src = gh("windwp/nvim-autopairs") },
   { src = gh("rafamadriz/friendly-snippets") },
-  { src = gh("L3MON4D3/LuaSnip"), version = vim.version.range("2") },
+  { src = gh("L3MON4D3/LuaSnip"),                     version = vim.version.range("2") },
   { src = gh("hrsh7th/nvim-cmp") },
   { src = gh("hrsh7th/cmp-nvim-lsp") },
   { src = gh("hrsh7th/cmp-buffer") },
@@ -247,6 +247,9 @@ require("conform").setup({
     timeout_ms = 500,
     lsp_fallback = true,
   },
+  formatters_by_ft = {
+    go = { "goimports", "gofmt" }
+  }
 })
 vim.keymap.set("", "<leader>f", function()
   require("conform").format({ async = true, lsp_fallback = true })
@@ -289,13 +292,16 @@ do
     sources = {
       { name = "nvim_lsp" },
       { name = "luasnip" },
-      { name = "buffer", option = {
-        get_bufnrs = function()
-          return vim.tbl_filter(function(bufnr)
-            return vim.bo[bufnr].buflisted and vim.api.nvim_buf_get_name(bufnr) > ""
-          end, vim.api.nvim_list_bufs())
-        end,
-      } },
+      {
+        name = "buffer",
+        option = {
+          get_bufnrs = function()
+            return vim.tbl_filter(function(bufnr)
+              return vim.bo[bufnr].buflisted and vim.api.nvim_buf_get_name(bufnr) > ""
+            end, vim.api.nvim_list_bufs())
+          end,
+        }
+      },
       { name = "path" },
     },
   })
