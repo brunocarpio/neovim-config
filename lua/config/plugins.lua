@@ -37,6 +37,7 @@ local specs = {
     version = vim.version.range("2"),
   },
   { src = gh("tpope/vim-commentary") },
+  { src = gh("tpope/vim-eunuch") },
   { src = gh("tpope/vim-abolish") },
   { src = gh("tpope/vim-dadbod") },
   { src = gh("tpope/vim-dispatch") },
